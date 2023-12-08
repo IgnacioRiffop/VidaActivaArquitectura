@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block contenido %}
+
+
+<h1 class="my-5 display-3 fw-bold ls-tight text-center">
+  Realiza tu<br />
+  <span class="text-primary">Postulación</span>
+</h1>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-2">
+      
+    </div>
+    <div class="col-md-auto">
+      <div class="input-group">
+        <span class="input-group-text">Que Taller Quiere Postular: </span>
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+        
+      </div>
+      
+      <div class="input-group">
+        <span class="input-group-text">Días en los que se dictara el taller: </span>
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+        
+      </div>
+      <div class="input-group">
+        <span class="input-group-text">Habilidades Relevantes: </span>
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+        
+      </div>
+      <input type="submit" value="Postularse" style="background-color: #4caf50; color: #fff; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">
+      <a class="text-primary text-uppercase" href="{% url 'resultados' %}">Ver resultados<i class="bi bi-chevron-right"></i></a>
+      
+    </div>
+    <div class="col col-lg-2">
+      <a href="{% url 'index' %}"><i class="fas fa-angle-left me-2"></i>Volver</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
