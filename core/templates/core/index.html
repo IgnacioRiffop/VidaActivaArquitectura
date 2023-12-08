@@ -1,0 +1,187 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<!--<a onclick="deleteProducto({{ aux.id }})" class="heart d-flex justify-content-center align-items-center ">borralo</a>-->
+
+<!-- NAVBAR INICIO ACTIVE -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
+    <a href="{% url 'index'%}" class="navbar-brand ms-lg-5">
+        <h1 class="m-0 text-uppercase text-dark"><i class="bi bi-brush fs-1 text-primary me-3"></i>Generacion Activa</h1>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-0">
+            {% if user.is_authenticated %}
+            <a href="#"class= "nav-link">Bienvenido: {{ user.username }}</a>
+            <a href="{% url 'logout' %}"class= "nav-link">Cerrar sesion</a>
+            {% if user.is_authenticated and user.groups.exists %}
+              {% for group in user.groups.all %}
+                {% if group.name == 'adulto' %}  
+                    <a href="{% url 'postulacion'%}" class="nav-link">Postulacion</a>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            {% else %}
+            <a href="{% url 'login' %}"class= "nav-link">Ingresar</a>
+            {% endif %}
+            <a href="{% url 'index'%}" class="nav-item nav-link active">Inicio</a>
+            <a href="{% url 'calificacion'%}" class="nav-link">Calificaciones</a>
+            {% if user.is_authenticated and user.groups.exists %}
+              {% for group in user.groups.all %}
+                {% if group.name == 'Funcionario' %}  
+                    <a href="{% url 'materiales'%}" class="nav-item nav-link">Materiales</a>
+                    <a href="{% url 'pago'%}" class="nav-item nav-link">Pago</a>     
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            {% if user.is_authenticated and user.groups.exists %}
+              {% for group in user.groups.all %}
+                {% if group.name == 'Instructor' %}  
+                    <a href="{% url 'bono'%}" class="nav-item nav-link">Bonos</a>
+                    <a href="{% url 'addTaller'%}" class="nav-item nav-link">Agregar Taller</a>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+
+            
+            {% if user.is_superuser %}
+            <a href="{% url 'usuarios'%}" class="nav-item nav-link">Usuarios</a>
+            {% else %}
+            {% endif %}
+
+            {% if user.is_authenticated and user.groups.exists %}
+              {% for group in user.groups.all %}
+                {% if group.name == 'adulto' or 'Instructor' %}  
+                  <a href="{% url 'cuenta' %}" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5"><i class="bi bi-person-fill"></i>Cuenta</a>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</nav>
+<!-- NAVBAR FIN ACTIVE -->
+
+
+<!-- VIDEO O CARRUSEL FIN HERO-HEADER=STYLE -->
+<!--                    ^                   -->
+<!--         MODULO DE POSIBLE VIDEO        -->
+<div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 16:9  -->
+                <div class="ratio ratio-16x9">
+                    <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
+                        allow="autoplay"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODULO DE POSIBLE VIDEO  -->
+
+<!-- ABOUT INICIO-->
+<div class="container-fluid py-5">
+	<div class="container">
+			<div class="row gx-5">
+					<div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+							<div class="position-relative h-100">
+									<img class="position-absolute w-100 h-100 rounded" src="{% static 'core/img/index.jpg'%}" style="object-fit: cover;">
+							</div>
+					</div>
+					<div class="col-lg-7">
+							<div class="border-start border-5 border-primary ps-5 mb-5">
+									<h6 class="text-primary text-uppercase">Mas de nosotros</h6>
+									<h1 class="display-5 text-uppercase mb-0">
+                                        Descubre Nuevas Perspectivas en Esta Etapa
+                                        </h1>
+							</div>
+							<h4 class="text-body mb-4">Explora el arte de envejecer activamente</h4>
+							<div class="bg-light p-4">
+									<ul class="nav nav-pills justify-content-between mb-3" id="pills-tab" role="tablist">
+											<li class="nav-item w-50" role="presentation">
+													<button class="nav-link text-uppercase w-100 active" id="pills-1-tab" data-bs-toggle="pill"
+															data-bs-target="#pills-1" type="button" role="tab" aria-controls="pills-1"
+															aria-selected="true">Nuestro objetivo</button>
+											</li>
+											<li class="nav-item w-50" role="presentation">
+													<button class="nav-link text-uppercase w-100" id="pills-2-tab" data-bs-toggle="pill"
+															data-bs-target="#pills-2" type="button" role="tab" aria-controls="pills-2"
+															aria-selected="false">Nuestra visión</button>
+											</li>
+									</ul>
+									<div class="tab-content" id="pills-tabContent">
+											<div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
+													<p class="mb-0">Empoderar a los adultos mayores para que vivan una vida plena y activa, proporcionando talleres que fomenten el aprendizaje continuo, la creatividad y el bienestar integral. Nos esforzamos por construir una comunidad donde la experiencia y la sabiduría se compartan, inspirando un envejecimiento activo y significativo.</p>
+											</div>
+                  <!--REALIZAR TRANSICION ENTRE OBETIVO Y VISION CON -->
+											<div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
+													<p class="mb-0">Lideramos al transformar la percepción del envejecimiento con oportunidades innovadoras para adultos mayores. Visualizamos una comunidad vibrante donde cada individuo, al envejecer, descubre nuevas dimensiones de su potencial, enriqueciendo así la experiencia de los años dorados y contribuyendo a una sociedad que celebra esta etapa de la vida.</p>
+											</div>
+									</div>
+							</div>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- ABOUT FIN -->
+
+<!-- SERVICIOS INICIO -->
+<div class="container-fluid py-5">
+  <div class="container">
+      <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+          <h6 class="text-primary text-uppercase">Talleres</h6>
+          <h1 class="display-5 text-uppercase mb-0">Conoce nuestros talleres disponibles</h1>
+      </div>
+      <div class="row g-5">
+        {% for taller in talleres %}
+          <div class="col-md-6">
+              <div class="service-item bg-light d-flex p-4">
+                
+                  <i class="flaticon-house display-1 text-primary me-4"></i>
+                  <div>
+                      <h5 class="text-uppercase mb-3">{{ taller.nombre }}</h5>
+                      <p>{{ taller.descripcion }}</p>
+                      <p>Fecha de incio: {{ taller.fechaInicio }}</p>
+                      <p>Fecha de término: {{ taller.fechaTermino }}</p>
+                      <p>Instructor: {{ taller.nombreInstructor }}</p>
+                      <p>{{ taller.sala }}</p>
+                      <p>{{ taller.municipalidad }}</p>
+                      {% if user.is_authenticated and user.groups.exists %}
+                        {% for group in user.groups.all %}
+                            {% if group.name == 'adulto' %}  
+                            <a class="text-primary text-uppercase" href="{% url 'inscripcion' taller.id %}">Inscríbete<i class="bi bi-chevron-right"></i></a>
+                            {% endif %}
+                        {% endfor %}
+                      {% endif %}
+
+                  </div>
+                
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+  </div>
+</div>
+<!-- SERVICIOS FIN-->
+
+  
+  
+  <!-- OFERTAS INICIO -->
+  <!-- OFERTAS FIN -->
+  
+  
+  
+  
+  {% endblock %}
+  {% block js %}
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="{% static 'core/js/mensajeProducto.js' %}"></script>
+  {% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<div class="container h-100 my-5">
+  <div class="row align-items-center justify-content-center">
+    <div class="card text-center">
+      <div class="card-header">Datos del usuario</div>
+      <div class="card-body">
+        <h5 class="card-title">{{ user.username }}</h5>
+        <ul class="list-group list-group-light">
+          <li class="list-group-item px-3">{{ user.adulto.nombre }} {{ user.adulto.apellido }}</li>
+          <li class="list-group-item px-3">{{ user.adulto.rut }}-{{ user.adulto.dv }}</li>
+        </ul>      
+      </div>
+      <a href="{% url 'updateAdulto' user.adulto.id %}" class="btn btn-primary" data-mdb-ripple-init>Editar datos personales y de usuario</a>
+      <a href="{% url 'index' %}"><i class="fas fa-angle-left me-2"></i>Volver</a>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
