@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Generacion Activa</title>
+    <title>Vida Activa</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -31,108 +31,15 @@
     <link href="{% static 'core/css/style.css' %}" rel="stylesheet">
 </head>
 
-<body>
-    <!-- BARRA SUPERIOR INICIO-->
-    <div class="container-fluid border-bottom d-none d-lg-block">
-        <div class="row gx-0">
-            <div class="col-lg-4 text-center py-2">
-                <div class="d-inline-flex align-items-center">
-                    <i class="bi bi-geo-alt fs-1 text-primary me-3"></i>
-                    <div class="text-start">
-                        <h6 class="text-uppercase mb-1">Municipalidad</h6>
-                        <span>DIRECCION: Av. Concha y Toro 1820, Puente Alto</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 text-center border-start border-end py-2">
-                <div class="d-inline-flex align-items-center">
-                    <i class="bi bi-envelope-open fs-1 text-primary me-3"></i>
-                    <div class="text-start">
-                        <h6 class="text-uppercase mb-1">CORREO</h6>
-                        <span>GeneracionActiva@mpuentealto.cl</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 text-center py-2">
-                <div class="d-inline-flex align-items-center">
-                    <i class="bi bi-phone-vibrate fs-1 text-primary me-3"></i>
-                    <div class="text-start">
-                        <h6 class="text-uppercase mb-1">LLAMANOS AL</h6>
-                        <span>+569 7993 8717</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- BARRA SUPERIOR FIN -->
-
     <!----------------------INICIO CONTENIDO-------------------------------->
     {% block contenido %}
     
     {% endblock %}
 
     <!----------------------FIN CONTENIDO--------------------------------->
-
-    <!-- INICIO FOOTER -->
-    <div class="container-fluid bg-light mt-5 py-5">
-        <div class="container pt-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Ponerse en contacto</h5>
-                    <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>DIRECCION: Av. Concha y Toro 1820, Puente Alto</p>
-                    <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>GeneracionActiva@mpuentealto.cl</p>
-                    <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+569 7993 8717</p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Links rápidos</h5>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-body mb-2" href="{% url 'index'%}"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Links populares</h5>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-body mb-2" href="{% url 'index'%}"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-
-                    <h6 class="text-uppercase mt-4 mb-3">Redes sociales</h6>
-                    <div class="d-flex">
-                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i class="bi bi-twitter"></i></a>
-                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i class="bi bi-facebook"></i></a>
-                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i class="bi bi-linkedin"></i></a>
-                        <a class="btn btn-outline-primary btn-square" href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="col-12 text-center text-body">
-                    <a class="text-body" href="">Términos y condiciones</a>
-                    <span class="mx-1">|</span>
-                    <a class="text-body" href="">Política de privacidad</a>
-                    <span class="mx-1">|</span>
-                    <a class="text-body" href="">Customer Support</a>
-                    <span class="mx-1">|</span>
-                    <a class="text-body" href="">Métodos de pago</a>
-                    <span class="mx-1">|</span>
-                    <a class="text-body" href="">Ayuda</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid bg-dark text-white-50 py-4">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-md-0">&copy; <a class="text-white" href="#">GeneracionActiva</a>. Reservados todos los derechos.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- FINAL FOOTER -->
     
 
     <!-- VOLVER AL TOP-->
-    <a href="#" class="btn btn-primary py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
