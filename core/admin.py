@@ -29,13 +29,14 @@ class InscripcionAdmin(admin.ModelAdmin):
     search_fields = ['usuario']
     list_per_page = 3
 
+
 class AdultoMayorAdmin(admin.ModelAdmin):
     list_display = ['rut','primer_nombre','segundo_nombre','primer_apellido','segundo_apellido', 'direccion', 'fecha_nacimiento', 'telefono', 'correo', 'comuna','genero','id_credencial']
     list_per_page = 10
     list_editable = ['primer_nombre','segundo_nombre','primer_apellido','segundo_apellido', 'direccion', 'fecha_nacimiento', 'telefono', 'correo', 'comuna','genero','id_credencial']
 
 class InstructorAdmin(admin.ModelAdmin):
-    list_display = ['rut','primer_nombre','segundo_nombre','primer_apellido','segundo_apellido', 'direccion', 'fecha_nacimiento', 'telefono', 'correo', 'sueldo', 'comuna','genero','id_credencial']
+    list_display = ['id','rut','primer_nombre','segundo_nombre','primer_apellido','segundo_apellido', 'direccion', 'fecha_nacimiento', 'telefono', 'correo', 'sueldo', 'comuna','genero','id_credencial']
     list_per_page = 10
     list_editable = ['primer_nombre','segundo_nombre','primer_apellido','segundo_apellido', 'direccion', 'fecha_nacimiento', 'telefono', 'correo', 'sueldo', 'comuna','genero','id_credencial']
 
