@@ -1,9 +1,26 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import User
 import uuid
 # Create your models here.
     
+class AdultoMayor(models.Model):
+    rut = models.CharField(max_length=50)
+    primer_nombre = models.CharField(max_length=50)
+    segundo_nombre = models.CharField(max_length=50)
+    primer_apellido = models.CharField(max_length=50)
+    segundo_apellido = models.CharField(max_length=50)
+    direccion = models.CharField(max_length=50)
+    fecha_nacimiento = models.DateField()
+    telefono = models.IntegerField()
+    correo = models.CharField(max_length=50)
+    comuna = models.CharField(max_length=50)
+    genero = models.CharField(max_length=50)
+    id_credencial = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.rut
+    
 class Adulto(models.Model):
   rut = models.IntegerField()
   dv = models.CharField(max_length=1)

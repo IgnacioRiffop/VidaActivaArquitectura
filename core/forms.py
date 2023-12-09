@@ -1,6 +1,10 @@
 from django import forms
 from django.forms import ModelForm
 from .models import *
+from django.contrib.auth.forms import UserCreationForm  
+from django.conf import settings
+from authentication.models import User  # Ajusta esto según la ubicación real de tu modelo de usuario personalizado
+
 
 
 
@@ -38,3 +42,23 @@ class TallerForm(ModelForm):
         model = Taller
         fields = '__all__'
 
+class RegistroForm (UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username','password1','password2']
+
+class dpForm (ModelForm):
+    rut = forms.CharField(widget=forms.TextInput(attrs={"placeholder":"Rut"}))
+    primer_nombre = forms.CharField(widget=forms.TextInput(attrs={"placeholder":"Primer nombre"}))
+    segundo_nombre = forms.CharField(widget=forms.TextInput(attrs={"placeholder":"Segundo nombre"}))
+    primer_apellido = forms.CharField(widget=forms.TextInput(attrs={"placeholder":"Primer apellido"}))
+    segundo_apellido = forms.CharField(widget=forms.TextInput(attrs={"placeholder":"Segundo apellido"}))
+    direccion = forms.CharField(widget=forms.TextInput(attrs={"placeholder":"Dirección"}))
+    fecha_nacimiento = forms.DateField(widget=forms.SelectDateWidget(years=range(1900, 2023)))
+    telefono = forms.IntegerField(min_value=1 ,widget=forms.NumberInput(attrs={"placeholder":"Telefono"}))
+    correo = forms.CharField(widget=forms.TextInput(attrs={"placeholder":"Correo"}))
+    comuna = forms.CharField(widget=forms.TextInput(attrs={"placeholder":"Comuna"}))
+    genero = forms.CharField(widget=forms.TextInput(attrs={"placeholder":"Genero"}))
+    class Meta:
+        model = AdultoMayor
+        fields = ['rut','primer_nombre','segundo_nombre','primer_apellido','segundo_apellido','direccion','fecha_nacimiento','telefono','correo','comuna','genero']

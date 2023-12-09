@@ -38,6 +38,46 @@ def suscripcion(request):
     return render(request,('core/suscripcion.html'))
 
 
+def registro(request):
+    data = {
+        'form': RegistroForm()
+    }
+
+    if request.method == 'POST':
+        formulario = RegistroForm(data=request.POST) # OBTIENE LA DATA DEL FORMULARIO
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username = formulario.cleaned_data["username"], password = formulario.cleaned_data["password1"])
+            login(request, user)
+            #messages.success(request, "Te has registrado correctamente!")
+            grupo = Group.objects.get(name='adulto')
+            user.groups.add(grupo)
+            #redirigir al home
+            #return redirect('index')  
+            return redirect(to="addDatosPersonales")
+        data["form"]=formulario
+    return render(request, 'core/registro.html', data)
+
+def addDatosPersonales(request):
+    usuario_actual = User.objects.get(username=request.user.username)
+
+    data = {
+        'form': dpForm(initial={'id_credencial': usuario_actual})
+    }
+
+    if request.method == 'POST':
+        formulario = dpForm(request.POST, files=request.FILES)
+
+        # Asignar el usuario actual al campo id_credencial antes de guardar
+        formulario.instance.id_credencial = usuario_actual
+
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Datos guardados correctamente!")
+            return render(request, 'core/index.html', data)
+
+    return render(request, 'core/addDatosPersonales.html', data)
+
 
 
 def calificacion(request):
