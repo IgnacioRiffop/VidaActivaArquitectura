@@ -42,38 +42,42 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse">
-    <div class="navbar-nav ms-3 py-0">
-      <a href="{% url 'index'%}" class="nav-item nav-link text-light">Home</a>
-      <a href="{% url 'calificacion'%}" class="nav-link  text-light">Calificaciones</a>
-      {% if user.is_authenticated and user.groups.exists %}
-      {% for group in user.groups.all %}
-      {% if group.name == 'Funcionario' %}
-      <a href="{% url 'materiales'%}" class="nav-item nav-link  text-light">Materiales</a>
-      <a href="{% url 'pago'%}" class="nav-item nav-link  text-light">Pago</a>
-      {% endif %}
-      {% endfor %}
-      {% endif %}
-      {% if user.is_authenticated and user.groups.exists %}
-      {% for group in user.groups.all %}
-      {% if group.name == 'Instructor' %}
-      <a href="{% url 'bono'%}" class="nav-item nav-link  text-light">Bonos</a>
-      <a href="{% url 'addTaller'%}" class="nav-item nav-link  text-light">Agregar Taller</a>
-      {% endif %}
-      {% endfor %}
-      {% endif %}
+<div class="navbar-nav ms-3 py-0">
+    {% if user.is_authenticated %}
+    <a href="#" class="nav-link text-light">{{ user.username }}</a>
+    {% endif %}
+    <a href="{% url 'index'%}" class="nav-item nav-link text-light">Home</a>
+    <a href="{% url 'talleres'%}" class="nav-item nav-link text-light">Talleres</a>
+    <a href="{% url 'calificacion'%}" class="nav-link  text-light">Calificaciones</a>
+    {% if user.is_authenticated and user.groups.exists %}
+    
+    {% for group in user.groups.all %}
+    {% if group.name == 'Funcionario' %}
+    <a href="{% url 'materiales'%}" class="nav-item nav-link  text-light">Materiales</a>
+    <a href="{% url 'pago'%}" class="nav-item nav-link  text-light">Pago</a>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% if user.is_authenticated and user.groups.exists %}
+    {% for group in user.groups.all %}
+    {% if group.name == 'Instructor' %}
+    <a href="{% url 'bono'%}" class="nav-item nav-link  text-light">Bonos</a>
+    <a href="{% url 'addTaller'%}" class="nav-item nav-link  text-light">Agregar Taller</a>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
 
       {% if user.is_authenticated %}
-      <a href="#" class="nav-link text-light">Bienvenido: {{ user.username }}</a>
-      <a href="{% url 'logout' %}" class="nav-link  text-light">Cerrar sesion</a>
-      {% if user.is_authenticated and user.groups.exists %}
-      {% for group in user.groups.all %}
-      {% if group.name == 'adulto' %}
-      <a href="{% url 'postulacion'%}" class="nav-link  text-light">Postulacion</a>
-      {% endif %}
-      {% endfor %}
-      {% endif %}
+        
+        {% if user.is_authenticated and user.groups.exists %}
+            {% for group in user.groups.all %}
+                {% if group.name == 'adulto' %}
+                <a href="{% url 'postulacion'%}" class="nav-link  text-light">Postulacion</a>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
       {% else %}
-      <a href="{% url 'login' %}" class="nav-link  text-light">Iniciar Sesión</a>
+        <a href="{% url 'login' %}" class="nav-link  text-light">Iniciar Sesión</a>
       {% endif %}
 
       {% if user.is_superuser %}
@@ -84,11 +88,16 @@
       {% if user.is_authenticated and user.groups.exists %}
       {% for group in user.groups.all %}
       {% if group.name == 'adulto' or 'Instructor' %}
-      <a href="{% url 'cuenta' %}" class="nav-item nav-link nav-contact bg-success text-light px-5 ms-lg-5"><i
+      <a href="{% url 'cuenta' %}" class="nav-item nav-link nav-contact text-light"><i
           class=""></i>Mi Cuenta</a>
       {% endif %}
       {% endfor %}
       {% endif %}
+
+      {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}" class="nav-link  text-light">Cerrar sesion</a>
+      {% endif %}
+      
     </div>
   </div>
 </nav>

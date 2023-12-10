@@ -29,6 +29,10 @@ def index(request):
     talleres = Taller.objects.all()
     return render(request, 'core/index.html', {'talleres': talleres})
 
+def talleres(request):
+    talleres = Taller.objects.all()
+    return render(request, 'core/talleres.html', {'talleres': talleres})
+
 
 def resultados(request):
     return render(request,('core/resultados.html'))
@@ -190,6 +194,26 @@ def inscripcion(request,id):
 
     return render(request, 'core/inscripcion.html', data)
 
+def inscripcionTaller(request,id):
+    taller = get_object_or_404(Taller, id=id)
+    adulto = get_object_or_404(AdultoMayor, id_credencial=request.user)
+
+    inscripciones = Inscripcion.objects.filter(usuario=adulto, taller=taller)
+    print(inscripciones.exists())
+    if inscripciones.exists():
+        inscrito = True
+    else:
+        # No se encontraron inscripciones
+        inscrito = False
+    return render(request, 'core/inscripcionTaller.html', {'taller': taller, 'inscrito':inscrito})
+
+def inscribirTaller(request,id):
+    taller = get_object_or_404(Taller, id=id)
+    adulto = get_object_or_404(AdultoMayor, id_credencial=request.user)
+    inscripcion = Inscripcion.objects.create(usuario = adulto, taller=taller)
+    return redirect('inscripcionTaller', id=taller.id)  
+
+
 
 
 def addTaller(request):
@@ -205,3 +229,4 @@ def addTaller(request):
         form = TallerForm()
 
     return render(request, 'core/addTaller.html', data)
+

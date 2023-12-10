@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<!-- TALLERES INICIO -->
+<div class="py-5">
+  <div class="mx-auto" style="text-align: center;">
+    <div class="">
+      <h6 class="text-success display-5 text-alaing">Talleres</h6>
+      <h1 class="display-5 mb-0">Infórmate sobre nuestros talleres disponibles.</h1>
+    </div>
+    <br>
+    <div class="row">
+      {% for taller in talleres %}
+
+        <div class="card text-bg-light mb-3 mx-auto" style="max-width: 25rem;">
+          <div class="card-header fs-4">{{ taller.nombre }}</div>
+          <div class="card-body">
+            <p class="card-text">{{ taller.descripcion }}</p>
+            <p class="card-text">Instructor: {{ taller.nombreInstructor.primer_nombre }} {{ taller.nombreInstructor.primer_apellido }}</p>
+            <p class="card-text">Municipalidad: {{ taller.municipalidad }}</p>
+            <p class="card-text">Sala: {{ taller.sala }}</p>
+            <p class="card-text">Fecha de inicio: {{ taller.fechaInicio }}</p>
+            <p class="card-text">Fecha de término: {{ taller.fechaTermino }}</p>
+            {% if user.is_authenticated and user.groups.exists %}
+            {% for group in user.groups.all %}
+            {% if group.name == 'adulto' %}
+                <a class="text-light btn btn-success" href="{% url 'inscripcionTaller' taller.id %}">Inscribir</a>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<!-- TALLERES FIN -->
+
+
+
+
+{% endblock %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'core/js/mensajeProducto.js' %}"></script>
+{% endblock %}

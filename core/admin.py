@@ -25,7 +25,7 @@ class TallerAdmin(admin.ModelAdmin):
     list_per_page = 3
     
 class InscripcionAdmin(admin.ModelAdmin):
-    list_display  = ['correo','usuario','taller']
+    list_display  = ['usuario','taller']
     search_fields = ['usuario']
     list_per_page = 3
 

@@ -87,7 +87,7 @@ class Taller(models.Model):
   descripcion = models.CharField(max_length=100)
   fechaInicio = models.DateField()
   fechaTermino = models.DateField()
-  nombreInstructor = models.CharField(max_length=40)
+  nombreInstructor = models.ForeignKey(Instructor, on_delete=models.CASCADE)
   sala        = models.ForeignKey(Sala, on_delete=models.CASCADE) 
   municipalidad = models.ForeignKey(Municipalidad, on_delete=models.CASCADE) 
   
@@ -95,9 +95,8 @@ class Taller(models.Model):
     return self.nombre
   
 class Inscripcion(models.Model):
-    correo = models.CharField(max_length=80)
-    usuario = models.ForeignKey(Adulto, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(AdultoMayor, on_delete=models.CASCADE)
     taller = models.ForeignKey(Taller, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.correo
+        return self.usuario.rut
