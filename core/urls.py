@@ -11,7 +11,7 @@ urlpatterns = [
     path('resultados/', resultados , name="resultados"),
     path('calificacion/', calificacion , name="calificacion"),
     path('usuarios/' , usuarios , name="usuarios"),
-    path('registrar/', registrar , name="registrar"),
+    #path('registrar/', registrar , name="registrar"), BORRAR HTML
     path('registro/', registro , name="registro"),
     path('addDatosPersonales/', addDatosPersonales, name="addDatosPersonales"),
 
@@ -19,7 +19,9 @@ urlpatterns = [
     path('inscribirTaller/<id>/', inscribirTaller, name='inscribirTaller'),
     path('inscripcionTaller/<id>/', inscripcionTaller, name='inscripcionTaller'),
 
-    path('postulacion/', postulacion , name="postulacion"),
+    path('postulacionad/', postulacionad , name="postulacionad"),
+    path('mispostulacionesad/', mispostulacionesad , name="mispostulacionesad"),
+
     path('materiales/', materiales , name="materiales"),
     path('mensaje/', mensaje , name="mensaje"),
     path('bono/', bono , name="bono"),

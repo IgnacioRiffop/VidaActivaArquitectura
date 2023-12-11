@@ -6,14 +6,14 @@
 <div class="py-5">
   <div class="mx-auto" style="text-align: center;">
     <div class="">
-      <h6 class="text-success display-5 text-alaing">Talleres</h6>
+      <h6 class="text-success display-5">Talleres</h6>
       <h1 class="display-5 mb-0">Infórmate sobre nuestros talleres disponibles.</h1>
     </div>
     <br>
-    <div class="row">
+    <div class="row justify-content-center">
       {% for taller in talleres %}
 
-        <div class="card text-bg-light mb-3 mx-auto" style="max-width: 25rem;">
+        <div class="card text-bg-light mb-3 mx-2" style="max-width: 25rem;">
           <div class="card-header fs-4">{{ taller.nombre }}</div>
           <div class="card-body">
             <p class="card-text">{{ taller.descripcion }}</p>

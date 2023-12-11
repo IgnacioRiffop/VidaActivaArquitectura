@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+
+
+
+<div class="py-5">
+  <div class="mx-auto" style="text-align: center;">
+    <div class="">
+      <h6 class="text-success display-5 text-alaing">Postula para dictar un taller</h6>
+      <h1 class="display-5 mb-0">Solo debes llenar el siguiente formulario</h1>
+      <br>
+      <a href="{% url 'mispostulacionesad' %}" class="btn btn-info text-white">Mis postulaciones</a>
+      <br>
+      <br>
+
+      <div class="container-fluid d-flex justify-content-center ">
+        <div class="bg-white p-5 rounded-5 text-dark shadow" style="width: 25rem">
+          <form action="" method="post">
+              <div class="text-center fs-2 fw-bold">Cuentanos!</div>
+              <br>
+              {% csrf_token %}
+              {{form | crispy}}
+              <div class="d-flex justify-content-around mt-1">
+              </div>
+              <input type="submit" value="Postular" class="btn btn-success my-1 w-100 mt-3 fw-semibold shadow-sm">
+          </form>
+        </div>
+      </div>
+
+    
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

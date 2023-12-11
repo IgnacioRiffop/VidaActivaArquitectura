@@ -48,7 +48,7 @@
     {% endif %}
     <a href="{% url 'index'%}" class="nav-item nav-link text-light">Home</a>
     <a href="{% url 'talleres'%}" class="nav-item nav-link text-light">Talleres</a>
-    <a href="{% url 'calificacion'%}" class="nav-link  text-light">Calificaciones</a>
+    <!--<a href="{% url 'calificacion'%}" class="nav-link  text-light">Calificaciones</a>-->
     {% if user.is_authenticated and user.groups.exists %}
     
     {% for group in user.groups.all %}
@@ -72,7 +72,7 @@
         {% if user.is_authenticated and user.groups.exists %}
             {% for group in user.groups.all %}
                 {% if group.name == 'adulto' %}
-                <a href="{% url 'postulacion'%}" class="nav-link  text-light">Postulacion</a>
+                <a href="{% url 'postulacionad'%}" class="nav-link  text-light">Postulate!</a>
                 {% endif %}
             {% endfor %}
         {% endif %}

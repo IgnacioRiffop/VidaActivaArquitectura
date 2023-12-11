@@ -1,0 +1,53 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+
+
+
+<div class="py-5">
+  <div class="mx-auto" style="text-align: center;">
+    <div class="">
+      <h6 class="text-success display-5 text-alaing">Postulaciones enviadas</h6>
+      <h1 class="display-5 mb-0">Aqui podras ver los detalles de tus postulaciones</h1>
+      <br>
+      <br>
+
+      <div class="container-fluid d-flex justify-content-center table-primary">
+        <div class="bg-white p-5 rounded-5 text-dark shadow" style="width: 70rem">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Nombre del taller</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Fecha de resultado</th>
+                    <th scope="col">Funcionario</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for postulacion in postulaciones %}
+                    <tr>
+                      <th scope="row">{{ postulacion.id }}</th>
+                      <td>{{ postulacion.fechapostulacion }}</td>
+                      <td>{{ postulacion.nombretaller }}</td>
+                      <td>{{ postulacion.descripcion }}</td>
+                      <td>{{ postulacion.fecharesultado }}</td>
+                      <td>{{ postulacion.funcionario }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+      </div>
+
+    
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

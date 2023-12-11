@@ -50,15 +50,15 @@ class Adulto(models.Model):
     return self.nombre
   
 class Sala(models.Model):
-  nombreSala  = models.CharField(max_length=30);
-  capacidad = models.IntegerField();
-  descripcion  = models.CharField(max_length=30);
+  nombreSala  = models.CharField(max_length=30)
+  capacidad = models.IntegerField()
+  descripcion  = models.CharField(max_length=30)
 
   def __str__(self):
     return self.nombreSala
 
 class Municipalidad(models.Model):
-  nombreMunicipalidad  = models.CharField(max_length=40);
+  nombreMunicipalidad  = models.CharField(max_length=40)
 
   def __str__(self):
     return self.nombreMunicipalidad
@@ -74,9 +74,9 @@ class Funcionario(models.Model):
         return self.rut
   
 class Bono(models.Model):
-  periodo  = models.CharField(max_length=30);
-  monto = models.IntegerField();
-  descripcion  = models.CharField(max_length=30);
+  periodo  = models.CharField(max_length=30)
+  monto = models.IntegerField()
+  descripcion  = models.CharField(max_length=30)
   funcionario = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
 
   def __str__(self):
@@ -100,3 +100,16 @@ class Inscripcion(models.Model):
 
     def __str__(self):
         return self.usuario.rut
+    
+class Postulacion(models.Model):
+    fechapostulacion = models.DateField()
+    puntaje = models.IntegerField(blank=True, null=True)
+    instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE, null=True, blank=True)
+    adultomayor = models.ForeignKey(AdultoMayor, on_delete=models.CASCADE, null=True, blank=True)
+    nombretaller = models.CharField(max_length=30)
+    descripcion = models.CharField(max_length=300)
+    fecharesultado = models.DateField(null=True, blank=True)
+    funcionario = models.ForeignKey(Funcionario, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.nombretaller

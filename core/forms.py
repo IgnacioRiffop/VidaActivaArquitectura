@@ -62,3 +62,11 @@ class dpForm (ModelForm):
     class Meta:
         model = AdultoMayor
         fields = ['rut','primer_nombre','segundo_nombre','primer_apellido','segundo_apellido','direccion','fecha_nacimiento','telefono','correo','comuna','genero']
+
+
+class PostulacionForm(ModelForm):
+        nombretaller = forms.CharField(label='Nombre del taller')
+        descripcion = forms.CharField(label='Descripcion', widget=forms.Textarea(attrs={'rows': 4, 'cols': 40, 'placeholder': 'Ingresa tu mensaje aquí'}), max_length=300)
+        class Meta:
+            model = Postulacion
+            fields = ['nombretaller','descripcion']

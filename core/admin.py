@@ -50,9 +50,15 @@ class BonoAdmin(admin.ModelAdmin):
     list_per_page = 10
     list_editable = ['monto','descripcion']
 
+class PostulacionAdmin(admin.ModelAdmin):
+    list_display = ['fechapostulacion','puntaje','instructor','adultomayor','nombretaller','descripcion','fecharesultado','funcionario']
+    list_per_page = 10
+
+
 admin.site.register(AdultoMayor,AdultoMayorAdmin)
 admin.site.register(Instructor,InstructorAdmin)
 admin.site.register(Funcionario,FuncionarioAdmin)
+admin.site.register(Postulacion,PostulacionAdmin)
 
 admin.site.register(Adulto,AdultoAdmin)
 admin.site.register(Sala,SalaAdmin)

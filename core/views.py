@@ -5,6 +5,7 @@ from django.contrib import messages
 import datetime
 from datetime import date   
 from datetime import timedelta
+from datetime import datetime
 from rest_framework import viewsets
 from .serializers import * 
 import requests
@@ -88,8 +89,26 @@ def calificacion(request):
     return render(request,('core/calificacion.html'))
 
 
-def postulacion(request):
-    return render(request,('core/postulacion.html'))
+def postulacionad(request):
+    adulto = get_object_or_404(AdultoMayor, id_credencial=request.user)
+    if request.method == 'POST':
+        form = PostulacionForm(request.POST)
+        if form.is_valid():
+            # Guardar el formulario solo si es válido
+            form.instance.fechapostulacion = datetime.now()
+            form.instance.adultomayor = adulto
+            form.save()
+            return render(request, 'core/postulacionad.html', {'form' : PostulacionForm()})  # Redirige a una página de éxito o a donde desees
+    else:
+        form = PostulacionForm()
+    return render(request, 'core/postulacionad.html', {'form' : PostulacionForm()})
+
+
+def mispostulacionesad(request):
+    adulto = get_object_or_404(AdultoMayor, id_credencial=request.user)
+    postulaciones = Postulacion.objects.filter(adultomayor=adulto)
+    return render(request, 'core/mispostulacionesad.html', {'postulaciones' : postulaciones})
+
     
 def materiales(request):
     return render(request,('core/materiales.html'))
@@ -111,6 +130,7 @@ def cuenta(request):
     return render(request,('core/cuenta.html'))
 
 
+"""
 def registrar(request):
     data = {'form': AdultoForm()}
 
@@ -136,7 +156,7 @@ def registrar(request):
             return redirect('index')  
 
     return render(request, 'core/registrar.html', data)
-
+"""
 
 def updateAdulto(request, id):
     adulto = get_object_or_404(Adulto, id=id)
@@ -212,9 +232,6 @@ def inscribirTaller(request,id):
     adulto = get_object_or_404(AdultoMayor, id_credencial=request.user)
     inscripcion = Inscripcion.objects.create(usuario = adulto, taller=taller)
     return redirect('inscripcionTaller', id=taller.id)  
-
-
-
 
 def addTaller(request):
     data = {
