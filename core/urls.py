@@ -40,5 +40,8 @@ urlpatterns = [
     path('Talleres/', talleres, name='talleres'),
     path('mistalleres/', mistalleres, name='mistalleres'),
     path('tustalleres/', tustalleres, name='tustalleres'),
+    path('mantenedorad/', mantenedorad, name='mantenedorad'),
+    path('mantenedorad/', mantenedorad, name='mantenedorad'),
+    path('deleteAdultoMayor/<id>/', deleteAdultoMayor, name='deleteAdultoMayor'),
 
 ]

@@ -112,6 +112,16 @@
       {% endfor %}
       {% endif %}
 
+      {% if user.is_authenticated and user.groups.exists %}
+    
+      {% for group in user.groups.all %}
+      {% if group.name == 'Funcionario' %}
+      <a href="{% url 'mantenedorad'%}" class="nav-item nav-link  text-light">Adultos Mayores</a>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
       {% if user.is_authenticated %}
       <a href="{% url 'logout' %}" class="nav-link  text-light">Cerrar sesion</a>
       {% endif %}

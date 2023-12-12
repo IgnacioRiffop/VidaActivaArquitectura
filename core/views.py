@@ -34,6 +34,10 @@ def talleres(request):
     talleres = Taller.objects.all()
     return render(request, 'core/talleres.html', {'talleres': talleres})
 
+def mantenedorad(request):
+    adultos = AdultoMayor.objects.all()
+    return render(request, 'core/mantenedorad.html', {'adultos': adultos})
+
 
 def tustalleres(request):
     instructor = get_object_or_404(Instructor, id_credencial=request.user)
@@ -210,6 +214,12 @@ def deleteAdulto(request,id):
     adulto.delete()
 
     return redirect(to="index")
+
+def deleteAdultoMayor(request,id):
+    adulto = get_object_or_404(AdultoMayor, id=id)
+    usuario = adulto.id_credencial
+    usuario.delete()
+    return redirect(to="mantenedorad")
 
 def inscripcion(request,id):
     taller = get_object_or_404(Taller, id=id)

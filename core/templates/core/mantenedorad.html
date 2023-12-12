@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<!-- TALLERES INICIO -->
+<div class="py-5">
+  <div class="mx-auto" style="text-align: center;">
+    <div class="">
+      <h6 class="text-success display-5">Adultos Mayores</h6>
+      <h1 class="display-5 mb-0">Puedes ver el listado de adultos mayores</h1>
+    </div>
+    <br>
+    <div class="container-fluid d-flex justify-content-center table-primary">
+        <div class="bg-white p-5 rounded-5 text-dark shadow" style="width: 70rem">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Rut</th>
+                    <th scope="col">eliminar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for adulto in adultos %}
+                    <tr>
+                      <td>{{ adulto.primer_nombre }} {{ adulto.segundo_nombre }} {{ adulto.primer_apellido }} {{ adulto.segundo_apellido }}</td>
+                      <td>{{ adulto.rut }}</td>
+                      <td><a href="{% url 'deleteAdultoMayor' adulto.id %}" class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- TALLERES FIN -->
+
+
+
+
+{% endblock %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'core/js/mensajeProducto.js' %}"></script>
+{% endblock %}
