@@ -32,6 +32,7 @@ urlpatterns = [
     path('mensaje/', mensaje , name="mensaje"),
     path('bono/', bono , name="bono"),
     path('pago/', pago , name="pago"),
+    path('pagovoucher/', pagovoucher , name="pagovoucher"),
     
     path('updateAdulto/<id>/', updateAdulto, name="updateAdulto"),
     path('deleteAdulto/<id>/', deleteAdulto, name='deleteAdulto'),

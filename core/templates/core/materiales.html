@@ -2,12 +2,14 @@
 {% load static %}
 {% block contenido %}
 
- 
-<h1 class="my-5 display-3 fw-bold ls-tight text-center">
-  Materiales<br />
-  <span class="text-primary">Disponibles</span>
-</h1>
-
+ <br>
+  <div class="mx-auto" style="text-align: center;">
+    <div class="">
+      <h6 class="text-success display-5">Materiales</h6>
+      <h1 class="display-5 mb-0">Aqui encontraras los materiales solicitados para los talleres</h1>
+    </div>
+  </div>
+  <br>
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col col-lg-2">
@@ -26,64 +28,31 @@
         <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>Yoga</td>
-            <td>Alfombra</td>
-            <td>
-              <button type="button" class="btn btn-link btn-sm px-3" data-ripple-color="dark">
-                <i class="fas fa-times">90</i>
-              </button>
-            </td>
+            <td>Dinamicas de grupo</td>
+            <td>Balon pequeño</td>
+            <td><i class="">4</i></td>
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td>Pintura</td>
-            <td>Pincel</td>
+            <td>Dinamicas de grupo</td>
+            <td>Cartas</td>
+            <td><i class="">5</i></td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Lectura</td>
+            <td>Libros</td>
             <td>
-              <button type="button" class="btn btn-link btn-sm px-3" data-ripple-color="dark">
-                <i class="fas fa-times">90</i>
-              </button>
+                <i class="">10</i>
             </td>
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td>Escritura</td>
-            <td>Cuaderno</td>
-            <td>
-              <button type="button" class="btn btn-link btn-sm px-3" data-ripple-color="dark">
-                <i class="fas fa-times">120</i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
             <td>Lectura</td>
-            <td>Libro</td>
+            <td>Hojas y lapices</td>
             <td>
-              <button type="button" class="btn btn-link btn-sm px-3" data-ripple-color="dark">
-                <i class="fas fa-times">169</i>
-              </button>
+                <i class="">15</i>
             </td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>Fotografia</td>
-            <td>Camara</td>
-            <td>
-              <button type="button" class="btn btn-link btn-sm px-3" data-ripple-color="dark">
-                <i class="fas fa-times">150</i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">6</th>
-            <td>Informatica</td>
-            <td>Computador</td>
-            <td>
-              <button type="button" class="btn btn-link btn-sm px-3" data-ripple-color="dark">
-                <i class="fas fa-times">70</i>
-              </button>
-            </td>
-            <a href="{% url 'index' %}"><i class="fas fa-angle-left me-2"></i>Volver</a>
           </tr>
         </tbody>
       </table>

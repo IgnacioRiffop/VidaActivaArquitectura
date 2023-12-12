@@ -148,8 +148,12 @@ def mensaje(request):
 
 def bono(request):
     return render(request,('core/bono.html'))
+
 def pago(request):
     return render(request,('core/pago.html'))
+
+def pagovoucher(request):
+    return render(request,('core/pagovoucher.html'))
 
 @grupo_requerido('administradores')
 def usuarios(request):
