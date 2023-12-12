@@ -12,7 +12,18 @@
       <h6 class="text-success display-5 text-alaing">Postula para dictar un taller</h6>
       <h1 class="display-5 mb-0">Solo debes llenar el siguiente formulario</h1>
       <br>
-      <a href="{% url 'mispostulacionesad' %}" class="btn btn-info text-white">Mis postulaciones</a>
+
+      {% if user.is_authenticated and user.groups.exists %}
+      {% for group in user.groups.all %}
+      {% if group.name == 'adulto' %}
+        <a href="{% url 'mispostulacionesad' %}" class="btn btn-info text-white">Mis postulaciones</a>
+      {% else %}
+        <a href="{% url 'mispostulacionesins' %}" class="btn btn-info text-white">Mis postulaciones</a>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+
+      
       <br>
       <br>
 

@@ -60,7 +60,7 @@ admin.site.register(Instructor,InstructorAdmin)
 admin.site.register(Funcionario,FuncionarioAdmin)
 admin.site.register(Postulacion,PostulacionAdmin)
 
-admin.site.register(Adulto,AdultoAdmin)
+#admin.site.register(Adulto,AdultoAdmin)
 admin.site.register(Sala,SalaAdmin)
 admin.site.register(Municipalidad,MunicipalidadAdmin)
 admin.site.register(Taller,TallerAdmin)

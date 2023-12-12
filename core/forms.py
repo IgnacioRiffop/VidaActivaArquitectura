@@ -35,7 +35,6 @@ class TallerForm(ModelForm):
     descripcion = forms.CharField(min_length=10,max_length=200,widget=forms.Textarea(attrs={"rows":4}))
     fechaInicio = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}))
     fechaTermino = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}))
-    nombreInstructor  = forms.CharField(min_length=3,widget=forms.TextInput(attrs={"placeholder":"Ingrese su nombre"})) 
 
 
     class Meta:

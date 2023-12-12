@@ -9,6 +9,7 @@ urlpatterns = [
     path('', index , name="index"),
     path('cuenta/', login_required(cuenta), name="cuenta"),
     path('micuenta/', login_required(micuenta), name="micuenta"),
+    path('micuentains/', login_required(micuentains), name="micuentains"),
 
 
     path('resultados/', resultados , name="resultados"),
@@ -23,7 +24,9 @@ urlpatterns = [
     path('inscripcionTaller/<id>/', inscripcionTaller, name='inscripcionTaller'),
 
     path('postulacionad/', postulacionad , name="postulacionad"),
+    path('postulacionins/', postulacionins , name="postulacionins"),
     path('mispostulacionesad/', mispostulacionesad , name="mispostulacionesad"),
+    path('mispostulacionesins/', mispostulacionesins , name="mispostulacionesins"),
 
     path('materiales/', materiales , name="materiales"),
     path('mensaje/', mensaje , name="mensaje"),
@@ -35,5 +38,6 @@ urlpatterns = [
     path('addTaller/', addTaller, name='addTaller'),
     path('Talleres/', talleres, name='talleres'),
     path('mistalleres/', mistalleres, name='mistalleres'),
+    path('tustalleres/', tustalleres, name='tustalleres'),
 
 ]

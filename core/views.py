@@ -35,6 +35,12 @@ def talleres(request):
     return render(request, 'core/talleres.html', {'talleres': talleres})
 
 
+def tustalleres(request):
+    instructor = get_object_or_404(Instructor, id_credencial=request.user)
+    talleres = Taller.objects.filter(nombreInstructor=instructor)
+    return render(request, 'core/tustalleres.html', {'talleres': talleres})
+
+
 def mistalleres(request):
     adulto = get_object_or_404(AdultoMayor, id_credencial=request.user)
     inscripciones = Inscripcion.objects.filter(usuario=adulto)
@@ -93,6 +99,20 @@ def addDatosPersonales(request):
 def calificacion(request):
     return render(request,('core/calificacion.html'))
 
+def postulacionins(request):
+    instructor = get_object_or_404(Instructor, id_credencial=request.user)
+    if request.method == 'POST':
+        form = PostulacionForm(request.POST)
+        if form.is_valid():
+            # Guardar el formulario solo si es válido
+            form.instance.fechapostulacion = datetime.now()
+            form.instance.instructor = instructor
+            form.save()
+            return render(request, 'core/postulacionad.html', {'form' : PostulacionForm()})  # Redirige a una página de éxito o a donde desees
+    else:
+        form = PostulacionForm()
+    return render(request, 'core/postulacionad.html', {'form' : PostulacionForm()})
+
 
 def postulacionad(request):
     adulto = get_object_or_404(AdultoMayor, id_credencial=request.user)
@@ -112,6 +132,11 @@ def postulacionad(request):
 def mispostulacionesad(request):
     adulto = get_object_or_404(AdultoMayor, id_credencial=request.user)
     postulaciones = Postulacion.objects.filter(adultomayor=adulto)
+    return render(request, 'core/mispostulacionesad.html', {'postulaciones' : postulaciones})
+
+def mispostulacionesins(request):
+    instructor = get_object_or_404(Instructor, id_credencial=request.user)
+    postulaciones = Postulacion.objects.filter(instructor=instructor)
     return render(request, 'core/mispostulacionesad.html', {'postulaciones' : postulaciones})
 
     
@@ -135,6 +160,11 @@ def micuenta(request):
     adulto = get_object_or_404(AdultoMayor, id_credencial=request.user)
     return render(request, 'core/micuenta.html', {'adulto' : adulto})
 
+def micuentains(request):
+    instructor = get_object_or_404(Instructor, id_credencial=request.user)
+    return render(request, 'core/micuentains.html', {'instructor' : instructor})
+
+
 def cuenta(request):
     adulto = get_object_or_404(AdultoMayor, id_credencial=request.user)
     username = adulto.id_credencial.username
@@ -155,33 +185,7 @@ def cuenta(request):
             return render(request, 'core/cuenta.html', data)
 
     return render(request, 'core/cuenta.html', data)
-"""
-def registrar(request):
-    data = {'form': AdultoForm()}
 
-    if request.method == 'POST':
-        formulario = AdultoForm(request.POST, files=request.FILES)
-        if formulario.is_valid():
-            rut = formulario.cleaned_data['rut']
-            dv = formulario.cleaned_data['dv']
-            nombre = formulario.cleaned_data['nombre']
-            apellido = formulario.cleaned_data['apellido']
-            usuario = formulario.cleaned_data['user']
-            contrasena = formulario.cleaned_data['contrasena']
-            
-            
-            user = User.objects.create_user(username=usuario, password=contrasena)
-            
-            adulto = Adulto.objects.create(rut=rut, dv=dv, nombre=nombre, apellido=apellido, user=user)
-
-            grupo = Group.objects.get(name='adulto')
-            user.groups.add(grupo)
-
-            messages.success(request, "Adulto almacenado correctamente")
-            return redirect('index')  
-
-    return render(request, 'core/registrar.html', data)
-"""
 
 def updateAdulto(request, id):
     adulto = get_object_or_404(Adulto, id=id)

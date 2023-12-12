@@ -2,15 +2,36 @@
 {% load static %}
 {% block contenido %}
 
-
-<div style="text-align: center; padding: 20px;">
-    <h1>Bonos</h1>
-    <p>Aqui podras ver tus bonos</p>
-    <p>¡Felicitaciones! Tu taller obtuvo mas del 80%</p>
-    <div style="margin-top: 20px; padding: 10px; background-color: #f9f9f9; border-radius: 4px;">
-        <p><strong>Bono:</strong> $50.000</p>
-        <p><strong>Fecha de pago:</strong> 31 de diciembre de 2023</p>
+<div class="py-5">
+  <div class="mx-auto" style="text-align: center;">
+    <div class="">
+      <h6 class="text-success display-5">Bonos</h6>
+      <h1 class="display-5 mb-0">Revisa si tienes algun bono por tus calificaciones</h1>
     </div>
+    <br>
+    <div class="row justify-content-center">
+
+      <div class="card mx-2" style="width: 18rem;">
+        <img src="{% static 'core/img/bono.png'%}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text text-uppercase fs-5">Obtuviste mas del 80% de aprobacion</p>
+          <p class="card-text text-uppercase fs-3">Monto: $150.000</p>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
 </div>
 
+
+
+
 {% endblock %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'core/js/mensajeProducto.js' %}"></script>
+{% endblock %}
+
+
+

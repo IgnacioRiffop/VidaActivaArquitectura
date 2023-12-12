@@ -47,7 +47,20 @@
     <a href="#" class="nav-link text-light">{{ user.username }}</a>
     {% endif %}
     <a href="{% url 'index'%}" class="nav-item nav-link text-light">Home</a>
+    
+    {% if user.is_authenticated and user.groups.exists %}
+    {% for group in user.groups.all %}
+    {% if group.name == 'Instructor' %}
+    <a href="{% url 'tustalleres'%}" class="nav-item nav-link text-light">Tus Talleres</a>
+    {% else %}
     <a href="{% url 'talleres'%}" class="nav-item nav-link text-light">Talleres</a>
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    <a href="{% url 'talleres'%}" class="nav-item nav-link text-light">Talleres</a>
+    {% endif %}
+
+    
     <!--<a href="{% url 'calificacion'%}" class="nav-link  text-light">Calificaciones</a>-->
     {% if user.is_authenticated and user.groups.exists %}
     
@@ -58,11 +71,12 @@
     {% endif %}
     {% endfor %}
     {% endif %}
+
     {% if user.is_authenticated and user.groups.exists %}
     {% for group in user.groups.all %}
     {% if group.name == 'Instructor' %}
     <a href="{% url 'bono'%}" class="nav-item nav-link  text-light">Bonos</a>
-    <a href="{% url 'addTaller'%}" class="nav-item nav-link  text-light">Agregar Taller</a>
+    <!--<a href="{% url 'addTaller'%}" class="nav-item nav-link  text-light">Agregar Taller</a>-->
     {% endif %}
     {% endfor %}
     {% endif %}
@@ -87,8 +101,12 @@
 
       {% if user.is_authenticated and user.groups.exists %}
       {% for group in user.groups.all %}
-      {% if group.name == 'adulto' or 'Instructor' %}
+      {% if group.name == 'adulto'%}
       <a href="{% url 'micuenta' %}" class="nav-item nav-link nav-contact text-light"><i
+          class=""></i>Mi Cuenta</a>
+      {% endif %}
+      {% if group.name == 'Instructor' %}
+      <a href="{% url 'micuentains' %}" class="nav-item nav-link nav-contact text-light"><i
           class=""></i>Mi Cuenta</a>
       {% endif %}
       {% endfor %}
