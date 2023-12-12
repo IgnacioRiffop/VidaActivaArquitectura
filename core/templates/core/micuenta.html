@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block contenido %}
+
+
+
+<div class="py-5">
+    <div class="mx-auto" style="text-align: center;">
+      <div class="">
+        <h6 class="text-success display-5 text-alaing">Mi Cuenta</h6>
+        <h1 class="display-5 mb-0">Aqui podras visulizar tus datos personales</h1>
+        <br>
+        <br>
+
+        <div class="row justify-content-center">
+        <div class="card text-bg-light mb-3 mx-2" style="max-width: 50rem;">
+            <div class="card-header fs-4 text-uppercase">{{ adulto.primer_nombre }} {{ adulto.segundo_nombre }} {{ adulto.primer_apellido }} {{ adulto.segundo_apellido }}</div>
+            <div class="card-body">
+              <p class="card-text text-uppercase">Direccion: {{ adulto.direccion }}</p>
+              <p class="card-text text-uppercase">Fecha de nacimiento: {{ adulto.fecha_nacimiento }}</p>
+              <p class="card-text text-uppercase">Contacto: {{ adulto.telefono }}</p>
+              <p class="card-text text-uppercase">Correo: {{ adulto.correo }}</p>
+              <p class="card-text text-uppercase">Comuna: {{ adulto.comuna }}</p>
+              <p class="card-text text-uppercase">Genero: {{ adulto.genero }}</p>
+            </div>
+          </div>
+        </div>
+        </div>
+        <br>
+        <a href="{% url 'cuenta' %}" class="btn btn-info text-white">Editar datos</a>
+      </div>
+    </div>
+  </div>
+  
+  
+
+{% endblock %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'core/js/mensajeProducto.js' %}"></script>
+{% endblock %}

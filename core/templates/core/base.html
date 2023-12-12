@@ -88,7 +88,7 @@
       {% if user.is_authenticated and user.groups.exists %}
       {% for group in user.groups.all %}
       {% if group.name == 'adulto' or 'Instructor' %}
-      <a href="{% url 'cuenta' %}" class="nav-item nav-link nav-contact text-light"><i
+      <a href="{% url 'micuenta' %}" class="nav-item nav-link nav-contact text-light"><i
           class=""></i>Mi Cuenta</a>
       {% endif %}
       {% endfor %}

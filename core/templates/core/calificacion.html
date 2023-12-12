@@ -2,46 +2,54 @@
 {% load static %}
 {% block contenido %}
 
-<h1 class="my-5 display-3 fw-bold ls-tight text-center">
-  Evaluaciones<br />
-  <span class="text-primary">De Talleres</span>
-</h1>
-
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'core/img/bob.jpg'%}" class="card-img-top" alt="Sunset Over the Sea"/>
-        <div class="card-body">
-          <p class="card-text text-center"><strong>Ruperto Perez</strong></p>
-          <p class="card-text"><strong>Taller de yoga</strong></p>
-          <p class="card-text"><strong>Aprobación 90%</strong></p>
-        </div>
-      </div>
+<div class="py-5">
+  <div class="mx-auto" style="text-align: center;">
+    <div class="">
+      <h6 class="text-success display-5">Calificaciones</h6>
+      <h1 class="display-5 mb-0">Revisa las calificaciones de nuestros instructores</h1>
     </div>
-    <div class="col-sm">
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'core/img/elder.jpg'%}" class="card-img-top" alt="Sunset Over the Sea"/>
+    <br>
+    <div class="row justify-content-center">
+
+      
+      <div class="card mx-2" style="width: 18rem;">
+        <img src="{% static 'core/img/instructor1.jpg'%}" class="card-img-top" alt="...">
         <div class="card-body">
-          <p class="card-text text-center"><strong>Pailita MJ</strong></p>
-          <p class="card-text"><strong>Taller de Pintura</strong></p>
-          <p class="card-text"><strong>Aprobación 70%</strong></p>
+          <p class="card-text text-uppercase fs-5">Jorge Riffo</p>
+          <p class="card-text text-uppercase fs-3">6,1</p>
         </div>
       </div>
-    </div>
-    <div class="col-sm">
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'core/img/lalo.jpeg'%}" class="card-img-top" alt="Sunset Over the Sea"/>
+
+            
+      <div class="card mx-2" style="width: 18rem;">
+        <img src="{% static 'core/img/instructora1.jpg'%}" class="card-img-top" alt="...">
         <div class="card-body">
-          <p class="card-text text-center"><strong>Cris floyd</strong></p>
-          <p class="card-text"><strong>Taller de Futbol</strong></p>
-          <p class="card-text"><strong>Aprobación 50%</strong></p>
+          <p class="card-text text-uppercase fs-5">Catalina Salazar</p>
+          <p class="card-text text-uppercase fs-3">6,5</p>
         </div>
       </div>
+
+      <div class="card mx-2" style="width: 18rem;">
+        <img src="{% static 'core/img/instructor2.jpg'%}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text text-uppercase fs-5">Fernando Campos</p>
+          <p class="card-text text-uppercase fs-3">6,3</p>
+        </div>
+      </div>
+
+
     </div>
   </div>
 </div>
 
+
+
+
 {% endblock %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'core/js/mensajeProducto.js' %}"></script>
+{% endblock %}
+
+
+

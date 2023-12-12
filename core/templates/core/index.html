@@ -24,7 +24,7 @@
             <p class="card-text">Ya sea que busques explorar nuevas habilidades, encontrar nuevas personas o simplemente disfrutar de momentos de creatividad, Vida Activa es el lugar perfecto para ti. Únete a nuestra comunidad y descubre el poder del aprendizaje continuo, la conexión social y la alegría de vivir bien en todas las etapas de la vida.</p>
           </div>
           {% if user.is_authenticated %}
-            <a href="" class="btn btn-success">Revisa nuestros talleres</a>
+            <a href="{% url 'talleres'%}" class="btn btn-success">Revisa nuestros talleres</a>
           {% else %}
             <a href="{% url 'login' %}" class="btn btn-success">Iniciar Sesión</a>
           {% endif %}

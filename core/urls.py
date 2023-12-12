@@ -8,6 +8,9 @@ urlpatterns = [
 
     path('', index , name="index"),
     path('cuenta/', login_required(cuenta), name="cuenta"),
+    path('micuenta/', login_required(micuenta), name="micuenta"),
+
+
     path('resultados/', resultados , name="resultados"),
     path('calificacion/', calificacion , name="calificacion"),
     path('usuarios/' , usuarios , name="usuarios"),
@@ -31,5 +34,6 @@ urlpatterns = [
     path('deleteAdulto/<id>/', deleteAdulto, name='deleteAdulto'),
     path('addTaller/', addTaller, name='addTaller'),
     path('Talleres/', talleres, name='talleres'),
+    path('mistalleres/', mistalleres, name='mistalleres'),
 
 ]

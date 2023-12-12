@@ -35,6 +35,11 @@ def talleres(request):
     return render(request, 'core/talleres.html', {'talleres': talleres})
 
 
+def mistalleres(request):
+    adulto = get_object_or_404(AdultoMayor, id_credencial=request.user)
+    inscripciones = Inscripcion.objects.filter(usuario=adulto)
+    return render(request, 'core/mistalleres.html', {'inscripciones': inscripciones})
+
 def resultados(request):
     return render(request,('core/resultados.html'))
 
@@ -126,10 +131,30 @@ def usuarios(request):
     usuarios = Adulto.objects.all()
     return render(request, 'core/usuarios.html', {'usuarios': usuarios})
 
+def micuenta(request):
+    adulto = get_object_or_404(AdultoMayor, id_credencial=request.user)
+    return render(request, 'core/micuenta.html', {'adulto' : adulto})
+
 def cuenta(request):
-    return render(request,('core/cuenta.html'))
+    adulto = get_object_or_404(AdultoMayor, id_credencial=request.user)
+    username = adulto.id_credencial.username
 
+    data = {
+        'form': dpForm(instance=adulto)
+    }
 
+    if request.method == 'POST':
+        formulario = dpForm(request.POST,instance=adulto, files=request.FILES)
+
+        # Asignar el usuario actual al campo id_credencial antes de guardar
+        formulario.instance.id_credencial = adulto.id_credencial
+
+        if formulario.is_valid():
+            formulario.save()
+            # Realiza cualquier modificación adicional en el objeto adulto si es necesario
+            return render(request, 'core/cuenta.html', data)
+
+    return render(request, 'core/cuenta.html', data)
 """
 def registrar(request):
     data = {'form': AdultoForm()}
