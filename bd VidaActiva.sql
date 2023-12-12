@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-12-2023 a las 06:34:00
+-- Tiempo de generación: 12-12-2023 a las 07:12:48
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.28
 
@@ -48,10 +48,10 @@ CREATE TABLE `authentication_user` (
 --
 
 INSERT INTO `authentication_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `email`, `first_name`, `last_name`, `is_active`, `is_staff`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$216000$ilLn18sJtkg6$7AfeH5d1J84hKWU64/zqBbIOe6aNwF0V+NrbtNPRRoY=', '2023-12-12 05:33:13.178386', 1, 'admin', NULL, 'admin', 'admin', 1, 1, '2023-12-09 22:29:01.289474'),
-(2, 'pbkdf2_sha256$216000$JjAnkxPZ2u4m$riKU3oZIa186mevl+6bC34CKwvFzf9iKiwaUIwpmy3Y=', '2023-12-12 04:29:50.675350', 0, 'ignacioRiffo', NULL, NULL, NULL, 1, 0, '2023-12-09 22:31:29.169851'),
-(7, 'pbkdf2_sha256$216000$s2qPdhTdvdov$kDgXV78NchOcIAFdC2Hgc+jn5UrUKg4oDwxysPUbvjk=', '2023-12-12 05:06:05.481525', 0, 'davidEsp', 'david@hotmail.com', NULL, NULL, 1, 0, '2023-12-12 02:05:04.765739'),
-(8, 'pbkdf2_sha256$216000$G3HsjNN8mYia$GsGqV1V1dNjHw+lvCI9IKeEhuhJ7zVJiap/oN4obwA4=', '2023-12-12 04:30:30.107688', 0, 'jorgeRiffo', 'jorge@gmail.com', NULL, NULL, 1, 0, '2023-12-12 02:07:22.885355');
+(1, 'pbkdf2_sha256$216000$ilLn18sJtkg6$7AfeH5d1J84hKWU64/zqBbIOe6aNwF0V+NrbtNPRRoY=', '2023-12-12 06:11:44.085000', 1, 'admin', NULL, 'admin', 'admin', 1, 1, '2023-12-09 22:29:01.289474'),
+(2, 'pbkdf2_sha256$216000$JjAnkxPZ2u4m$riKU3oZIa186mevl+6bC34CKwvFzf9iKiwaUIwpmy3Y=', '2023-12-12 06:00:19.128431', 0, 'ignacioRiffo', NULL, NULL, NULL, 1, 0, '2023-12-09 22:31:29.169851'),
+(7, 'pbkdf2_sha256$216000$s2qPdhTdvdov$kDgXV78NchOcIAFdC2Hgc+jn5UrUKg4oDwxysPUbvjk=', '2023-12-12 06:10:50.213592', 0, 'damianCon', 'damian@gmail.com', NULL, NULL, 1, 0, '2023-12-12 02:05:04.765739'),
+(8, 'pbkdf2_sha256$216000$G3HsjNN8mYia$GsGqV1V1dNjHw+lvCI9IKeEhuhJ7zVJiap/oN4obwA4=', '2023-12-12 05:59:45.568835', 0, 'jorgeRiffo', 'jorge@gmail.com', NULL, NULL, 1, 0, '2023-12-12 02:07:22.885355');
 
 -- --------------------------------------------------------
 
@@ -663,7 +663,8 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (39, '2023-12-12 02:14:00.564045', '2', '10971348-1', 1, '[{\"added\": {}}]', 7, 1),
 (40, '2023-12-12 02:14:42.424346', '3', 'Lectura', 1, '[{\"added\": {}}]', 14, 1),
 (41, '2023-12-12 02:28:53.179497', '12', '20426803-7', 1, '[{\"added\": {}}]', 11, 1),
-(42, '2023-12-12 04:26:08.057275', '4', 'Dinamicas de grupo', 1, '[{\"added\": {}}]', 14, 1);
+(42, '2023-12-12 04:26:08.057275', '4', 'Dinamicas de grupo', 1, '[{\"added\": {}}]', 14, 1),
+(43, '2023-12-12 05:40:52.143157', '7', 'damianCon', 2, '[{\"changed\": {\"fields\": [\"Username\", \"Email\"]}}]', 6, 1);
 
 -- --------------------------------------------------------
 
@@ -753,6 +754,13 @@ CREATE TABLE `django_session` (
   `session_data` longtext NOT NULL,
   `expire_date` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `django_session`
+--
+
+INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+('1gtcku9z3xfxm6w1dv409mmo1dokzwkr', '.eJxVjEEOwiAQRe_C2hCGAk1duvcMZIYZpGogKe3KeHdt0oVu_3vvv1TEbS1x67LEmdVZgTr9boTpIXUHfMd6azq1ui4z6V3RB-362liel8P9OyjYy7d2ECiLGOedHzPZ0SGDYUeDn1zyE0kICcUk44mzT2gBkRgs5GDtAOr9Ae6PODo:1rCvzc:Xnbf0ejG7ZAB8TBat4WsFSyMwJ6l29ZuMELpkRRW3wI', '2023-12-26 06:11:44.099639');
 
 --
 -- Índices para tablas volcadas
@@ -914,13 +922,13 @@ ALTER TABLE `django_session`
 -- AUTO_INCREMENT de la tabla `authentication_user`
 --
 ALTER TABLE `authentication_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `authentication_user_groups`
 --
 ALTER TABLE `authentication_user_groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `authentication_user_user_permissions`
@@ -956,7 +964,7 @@ ALTER TABLE `core_adulto`
 -- AUTO_INCREMENT de la tabla `core_adultomayor`
 --
 ALTER TABLE `core_adultomayor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `core_bono`
@@ -1010,7 +1018,7 @@ ALTER TABLE `core_taller`
 -- AUTO_INCREMENT de la tabla `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `django_content_type`
